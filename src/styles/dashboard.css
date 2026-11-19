@@ -1,0 +1,356 @@
+/* ---------- Generic controls ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-card);
+  color: var(--color-foreground);
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--color-hover);
+  border-color: color-mix(in srgb, var(--color-muted-foreground) 30%, var(--color-border));
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: #475569;
+  border: 1px solid color-mix(in srgb, #fff 22%, transparent);
+}
+
+.avatar-teal {
+  width: 24px;
+  height: 24px;
+  flex-basis: 24px;
+  font-size: 9px;
+  /* Was a teal gradient; now a flat #D6FF59 accent with the near-black label
+     that the lime demands (white text would sit at ~1.3:1 here). */
+  background: #d6ff59;
+  color: #1c1b1a;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.badge-live {
+  /* The lime accent lives in the border, fill and dot — never the label.
+     As *text* on a light surface #D6FF59 sits at ~1.05:1 against #EAEAE7, so
+     the wording stays in the ink colour and the lime is carried by `--dot`. */
+  --dot: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
+  background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  color: var(--color-foreground);
+}
+
+.badge-live i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dot);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 22%, transparent);
+}
+
+/* ---------- Page ---------- */
+.page {
+  position: relative;
+  /* Above the workspace cell grid, which sits at z-index 0 inside the same
+     scrolling panel. Without this the card would be painted under the lines. */
+  z-index: 1;
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: clamp(18px, 2.6vw, 30px) clamp(14px, 3vw, 30px) 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------- Builder card ---------- */
+.builder-card {
+  overflow: hidden;
+}
+
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-head h2 {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  font-weight: 650;
+}
+
+.card-head p {
+  margin: 3px 0 0;
+  font-size: 11.5px;
+  color: var(--color-muted-foreground);
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.card-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.owner {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: var(--color-muted-foreground);
+}
+
+/* Workspace surround behind the Dashboard's cell grid.
+   The shared --color-background token (#EAEAE7 in light) is a warm grey that
+   read as dull behind the grid, so this surface is lifted to a brighter, fresher
+   near-white. It is scoped to the panel that carries the grid rather than the
+   token itself, so the sheet drawer and the placeholder pages keep the standard
+   tone.
+
+   The surface is declared in BOTH themes, not just light. The active tab reuses
+   this same class so the tab and the panel below it are painted by one rule and
+   cannot drift apart. If dark were left unset the class would resolve to
+   `transparent` there, and the active tab would show the sidebar through it.
+   Dark therefore repeats whatever bg-background already gave the panel, which
+   also keeps the seam against the #242424 strip visible. */
+.wb-workspace-surface {
+  background: var(--color-background);
+}
+
+[data-theme="light"] .wb-workspace-surface {
+  background: #f7f7f5;
+}
+
+.wb-demo-shell {
+  padding: 16px;
+  min-width: 0;
+}
+
+.wb-demo-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.wb-demo-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.wb-demo-label i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 16%, transparent);
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 11px 14px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 26%, var(--color-border));
+  border-radius: 11px;
+  background: var(--color-card);
+  color: var(--color-foreground);
+  font-size: 12px;
+  box-shadow: var(--shadow-pop);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toast .icon {
+  color: var(--color-primary-ink);
+  flex: 0 0 auto;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .card-head {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  /* Trim the stacked card padding so the content gets the width back. The
+     desktop shell is built from page > card > demo shell > workflow root, four
+     nested surfaces; on a phone each inset is halved and the decorative
+     "interactive preview" line is dropped. */
+  .page {
+    gap: 10px;
+    padding: 10px 10px 0;
+  }
+
+  .card {
+    border-radius: 12px;
+  }
+
+  .card-head {
+    padding: 14px 14px 12px;
+  }
+
+  .card-head-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .wb-demo-shell {
+    padding: 8px;
+  }
+
+  .wb-demo-toolbar {
+    display: none;
+  }
+
+  .wb-root {
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 560px) {
+  .owner {
+    display: none;
+  }
+
+  .toast {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: none;
+  }
+}
+
+/* On a phone the Dashboard is the workflow itself, not a page containing a
+   card containing a demo containing a workflow. Strip every decorative layer
+   (page gutter, card frame, card header, demo shell, cell grid) and let the
+   canvas own the screen. The Export panel stays below it, so no feature is
+   lost - it simply stops fighting the canvas for space. */
+@media (max-width: 767px) {
+  .page {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
+
+  .builder-card {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .card-head {
+    display: none;
+  }
+
+  .wb-demo-shell {
+    padding: 0;
+  }
+
+  /* The component injects its own <style> after this sheet, so these mobile
+     overrides need one extra class of specificity to win. */
+  .wb-demo-shell .wb-root {
+    border-radius: 0;
+    background: var(--wb-card);
+  }
+
+  .wb-demo-shell .wb-header {
+    padding: 12px 10px;
+  }
+
+  .wb-demo-shell .wb-workspace {
+    gap: 10px;
+  }
+
+  .wb-demo-shell .wb-canvas-frame-host {
+    aspect-ratio: auto;
+    min-height: min(56svh, 440px);
+    height: min(56svh, 440px);
+  }
+
+  .wb-workspace .wb-export {
+    border-radius: 12px;
+  }
+}

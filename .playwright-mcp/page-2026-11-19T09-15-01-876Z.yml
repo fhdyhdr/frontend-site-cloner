@@ -1,0 +1,12 @@
+- generic [ref=f11e3]:
+  - generic [ref=f11e4]: "[plugin:vite:oxc] Transform failed with 1 error: [PARSE_ERROR] Expected a semicolon or an implicit semicolon after a statement, but found none ╭─[ src/components/ui/interactive-workflow-blueprint.tsx:511:35 ] │ 511 │ /* The pane inherits ReactFlow's `grab` cursor. Over the particles the user is │ │ │ ╰─ │ │ Help: Try inserting a semicolon here ─────╯"
+  - generic [ref=f11e5]: D:/site cloner/site cloner/src/components/ui/interactive-workflow-blueprint.tsx
+  - generic [ref=f11e7]: at transformWithOxc (file:///D:/site%20cloner/site%20cloner/node_modules/vite/dist/node/chunks/node.js:7673:19) at TransformPluginContext.transform (file:///D:/site%20cloner/site%20cloner/node_modules/vite/dist/node/chunks/node.js:7747:26) at EnvironmentPluginContainer.transform (file:///D:/site%20cloner/site%20cloner/node_modules/vite/dist/node/chunks/node.js:8636:51) at async loadAndTransform (file:///D:/site%20cloner/site%20cloner/node_modules/vite/dist/node/chunks/node.js:20112:26) at async viteTransformMiddleware (file:///D:/site%20cloner/site%20cloner/node_modules/vite/dist/node/chunks/node.js:20332:20)
+  - generic [ref=f11e8]:
+    - text: Click outside, press Esc key, or fix the code to dismiss.You can also disable this overlay by setting
+    - code [ref=f11e9]: server.hmr.overlay
+    - text: to
+    - code [ref=f11e10]: "false"
+    - text: in
+    - code [ref=f11e11]: vite.config.ts
+    - text: .

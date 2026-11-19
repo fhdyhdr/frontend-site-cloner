@@ -1,0 +1,107 @@
+- generic [ref=f3e2]:
+  - generic [ref=f3e4]:
+    - generic [ref=f3e5]:
+      - button "Open navigation" [ref=f3e7] [cursor=pointer]
+      - generic [ref=f3e8]:
+        - tablist [ref=f3e9]:
+          - listitem [ref=f3e10]:
+            - tab "Dashboard" [selected] [ref=f3e12] [cursor=pointer]
+        - button "Open a new tab" [ref=f3e23] [cursor=pointer]
+      - button "Switch to light theme" [ref=f3e26] [cursor=pointer]
+      - button "Tab options" [ref=f3e33] [cursor=pointer]
+    - main [ref=f3e38]:
+      - region "Workflow canvas" [ref=f3e42]:
+        - generic [ref=f3e44]:
+          - generic [ref=f3e45]:
+            - heading "Workflow canvas" [level=2] [ref=f3e46]
+            - generic [ref=f3e47]: Live canvas
+          - paragraph [ref=f3e49]: Chat with your spreadsheets — ask a question, get a checked answer with a chart.
+        - generic [ref=f3e50]:
+          - generic [ref=f3e51]: Interactive preview
+          - region "Chat with your spreadsheets" [ref=f3e54]:
+            - generic [ref=f3e56]:
+              - textbox "Site URL to clone" [ref=f3e57]:
+                - /placeholder: https://example.com
+              - button "Refresh preview" [ref=f3e58] [cursor=pointer]
+              - button "Clone Site" [ref=f3e62] [cursor=pointer]
+            - generic [ref=f3e63]:
+              - generic [ref=f3e64]:
+                - application "Chat with your spreadsheets diagram" [ref=f3e69]
+                - generic [ref=f3e73]:
+                  - 'group "Branding: Brand Style Guide" [ref=f3e74]':
+                    - generic [ref=f3e75]:
+                      - paragraph [ref=f3e76]: Branding
+                      - generic [ref=f3e77]:
+                        - generic [ref=f3e78]:
+                          - heading "Brand Style Guide" [level=3] [ref=f3e79]
+                          - paragraph [ref=f3e80]: Core identity
+                        - generic [ref=f3e81]: AaBb
+                    - generic [ref=f3e83]:
+                      - 'button "Copy color #2A2A2A" [ref=f3e84] [cursor=pointer]':
+                        - generic: "#2A2A2A"
+                      - 'button "Copy color #5D4435" [ref=f3e85] [cursor=pointer]':
+                        - generic: "#5D4435"
+                      - 'button "Copy color #A5B592" [ref=f3e86] [cursor=pointer]':
+                        - generic: "#A5B592"
+                      - 'button "Copy color #F0F0E6" [ref=f3e87] [cursor=pointer]':
+                        - generic: "#F0F0E6"
+                  - 'group "Design System: Design System Showcase" [ref=f3e88]':
+                    - generic [ref=f3e89]:
+                      - paragraph [ref=f3e90]: Design System
+                      - generic [ref=f3e91]:
+                        - generic [ref=f3e92]:
+                          - heading "Design System Showcase" [level=3] [ref=f3e93]
+                          - paragraph [ref=f3e94]: Components & tokens
+                        - generic [ref=f3e95]: UI/
+                    - generic [ref=f3e97]:
+                      - 'button "Copy color #0F172A" [ref=f3e98] [cursor=pointer]':
+                        - generic: "#0F172A"
+                      - 'button "Copy color #3B82F6" [ref=f3e99] [cursor=pointer]':
+                        - generic: "#3B82F6"
+                      - 'button "Copy color #93C5FD" [ref=f3e100] [cursor=pointer]':
+                        - generic: "#93C5FD"
+                      - 'button "Copy color #E2E8F0" [ref=f3e101] [cursor=pointer]':
+                        - generic: "#E2E8F0"
+                  - 'group "Typography: Typography Showcase" [ref=f3e102]':
+                    - generic [ref=f3e103]:
+                      - paragraph [ref=f3e104]: Typography
+                      - generic [ref=f3e105]:
+                        - generic [ref=f3e106]:
+                          - heading "Typography Showcase" [level=3] [ref=f3e107]
+                          - paragraph [ref=f3e108]: SF Pro
+                        - generic [ref=f3e109]: AaBb
+                    - generic [ref=f3e111]:
+                      - 'button "Copy color #1C1917" [ref=f3e112] [cursor=pointer]':
+                        - generic: "#1C1917"
+                      - 'button "Copy color #57534E" [ref=f3e113] [cursor=pointer]':
+                        - generic: "#57534E"
+                      - 'button "Copy color #A8A29E" [ref=f3e114] [cursor=pointer]':
+                        - generic: "#A8A29E"
+                      - 'button "Copy color #F5F5F4" [ref=f3e115] [cursor=pointer]':
+                        - generic: "#F5F5F4"
+              - complementary "Export project" [ref=f3e116]:
+                - generic [ref=f3e117]:
+                  - heading "Export" [level=3] [ref=f3e118]
+                  - paragraph [ref=f3e119]: Pick a format for your cloned site, then download the ZIP.
+                - generic [ref=f3e120]:
+                  - tablist "Export format" [ref=f3e121]:
+                    - tab "Static" [selected] [ref=f3e122] [cursor=pointer]
+                    - tab "Vite" [ref=f3e125] [cursor=pointer]
+                    - tab "Next.js" [ref=f3e127] [cursor=pointer]
+                  - list [ref=f3e129]:
+                    - listitem [ref=f3e130]:
+                      - link "Preparing files" [ref=f3e131] [cursor=pointer]:
+                        - /url: "#prepare"
+                    - listitem [ref=f3e133]:
+                      - link "Compressing ZIP" [ref=f3e134] [cursor=pointer]:
+                        - /url: "#compress"
+                    - listitem [ref=f3e136]:
+                      - link "Saving download" [ref=f3e137] [cursor=pointer]:
+                        - /url: "#save"
+                    - listitem [ref=f3e139]:
+                      - link "Done" [ref=f3e140] [cursor=pointer]:
+                        - /url: "#done"
+                - generic [ref=f3e142]:
+                  - button "Download ZIP Static Download ZIP Static" [ref=f3e143] [cursor=pointer]
+                  - button "Open full editor Open full editor" [ref=f3e144] [cursor=pointer]
+  - status

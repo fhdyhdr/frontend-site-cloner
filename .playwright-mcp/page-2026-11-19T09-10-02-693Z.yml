@@ -1,0 +1,161 @@
+- generic [ref=f9e2]:
+  - generic [ref=f9e3]:
+    - complementary [ref=f9e4]:
+      - generic [ref=f9e5]:
+        - generic [ref=f9e6]:
+          - generic [ref=f9e7]: Flowdeck
+          - button "Collapse sidebar" [ref=f9e13] [cursor=pointer]
+        - navigation [ref=f9e15]:
+          - button "Dashboard" [ref=f9e16] [cursor=pointer]
+          - button "Project" [ref=f9e22] [cursor=pointer]
+          - button "Setting" [ref=f9e29] [cursor=pointer]
+        - generic [ref=f9e37]:
+          - generic [ref=f9e38]:
+            - generic [ref=f9e39]:
+              - list [ref=f9e41]:
+                - listitem [ref=f9e42] [cursor=pointer]: Home
+                - listitem [ref=f9e46] [cursor=pointer]: Pages
+                - listitem [ref=f9e50] [cursor=pointer]: Activity stream
+                - listitem [ref=f9e54] [cursor=pointer]: Site settings
+              - list [ref=f9e60]:
+                - listitem [ref=f9e61] [cursor=pointer]: My preferences & profile
+                - listitem [ref=f9e65] [cursor=pointer]: Documentations
+                - listitem [ref=f9e69] [cursor=pointer]: Sign out
+            - generic [ref=f9e73]:
+              - generic [ref=f9e74]: Pattern FX
+              - generic [ref=f9e75]:
+                - button "Flowdeck Lime" [ref=f9e76] [cursor=pointer]
+                - button "DShapes Magenta" [ref=f9e77] [cursor=pointer]
+                - button "Cobalt Prism" [pressed] [ref=f9e78] [cursor=pointer]
+                - button "Solar Crimson" [ref=f9e79] [cursor=pointer]
+              - generic [ref=f9e80]:
+                - generic [ref=f9e81]:
+                  - generic [ref=f9e82]: Opacity
+                  - generic [ref=f9e83]: 26%
+                - slider "Pattern opacity" [ref=f9e84] [cursor=pointer]: "26"
+              - generic [ref=f9e85]:
+                - generic [ref=f9e86]:
+                  - generic [ref=f9e87]: Edge fade
+                  - generic [ref=f9e88]: 22%
+                - slider "Edge fade" [ref=f9e89] [cursor=pointer]: "22"
+            - generic [ref=f9e90]:
+              - button "Light theme" [ref=f9e91] [cursor=pointer]
+              - button "Dark theme" [ref=f9e98] [cursor=pointer]
+              - button "System theme" [ref=f9e101] [cursor=pointer]
+          - generic [ref=f9e104] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f9e105]: MR
+            - generic [ref=f9e106]:
+              - generic "Maya Renata" [ref=f9e107]
+              - generic "maya.renata@flowdeck.io" [ref=f9e108]
+    - generic [ref=f9e109]:
+      - generic [ref=f9e110]:
+        - generic [ref=f9e111]: Flowdeck
+        - generic [ref=f9e112]:
+          - tablist [ref=f9e113]:
+            - listitem [ref=f9e114]:
+              - tab "Dashboard" [selected] [ref=f9e116] [cursor=pointer]
+          - button "Open a new tab" [ref=f9e127] [cursor=pointer]
+        - generic [ref=f9e129]:
+          - button "Continue with Google" [ref=f9e130] [cursor=pointer]
+          - button "Switch to dark theme" [ref=f9e132] [cursor=pointer]
+        - button "Tab options" [ref=f9e135] [cursor=pointer]
+      - main [ref=f9e140]:
+        - region "Workflow canvas" [ref=f9e144]:
+          - generic [ref=f9e145]:
+            - generic [ref=f9e146]:
+              - generic [ref=f9e147]:
+                - heading "Workflow canvas" [level=2] [ref=f9e148]
+                - generic [ref=f9e149]: Live canvas
+              - paragraph [ref=f9e151]: Chat with your spreadsheets — ask a question, get a checked answer with a chart.
+            - generic [ref=f9e153]:
+              - generic [ref=f9e154]: MR
+              - text: Maya owns this flow
+          - generic [ref=f9e155]:
+            - generic [ref=f9e156]: Interactive preview
+            - region "Chat with your spreadsheets" [ref=f9e159]:
+              - generic [ref=f9e161]:
+                - textbox "Site URL to clone" [ref=f9e162]:
+                  - /placeholder: https://example.com
+                - button "Refresh preview" [ref=f9e163] [cursor=pointer]
+                - button "Clone Site" [ref=f9e167] [cursor=pointer]
+              - generic [ref=f9e168]:
+                - generic [ref=f9e169]:
+                  - application "Chat with your spreadsheets diagram" [ref=f9e174]
+                  - generic [ref=f9e179]:
+                    - 'group "Branding: Brand Style Guide" [ref=f9e180]':
+                      - generic [ref=f9e181]:
+                        - paragraph [ref=f9e182]: Branding
+                        - generic [ref=f9e183]:
+                          - generic [ref=f9e184]:
+                            - heading "Brand Style Guide" [level=3] [ref=f9e185]
+                            - paragraph [ref=f9e186]: Core identity
+                          - generic [ref=f9e187]: AaBb
+                      - generic [ref=f9e189]:
+                        - 'button "Copy color #2A2A2A" [ref=f9e190] [cursor=pointer]':
+                          - generic: "#2A2A2A"
+                        - 'button "Copy color #5D4435" [ref=f9e191] [cursor=pointer]':
+                          - generic: "#5D4435"
+                        - 'button "Copy color #A5B592" [ref=f9e192] [cursor=pointer]':
+                          - generic: "#A5B592"
+                        - 'button "Copy color #F0F0E6" [ref=f9e193] [cursor=pointer]':
+                          - generic: "#F0F0E6"
+                    - 'group "Design System: Design System Showcase" [ref=f9e194]':
+                      - generic [ref=f9e195]:
+                        - paragraph [ref=f9e196]: Design System
+                        - generic [ref=f9e197]:
+                          - generic [ref=f9e198]:
+                            - heading "Design System Showcase" [level=3] [ref=f9e199]
+                            - paragraph [ref=f9e200]: Components & tokens
+                          - generic [ref=f9e201]: UI/
+                      - generic [ref=f9e203]:
+                        - 'button "Copy color #0F172A" [ref=f9e204] [cursor=pointer]':
+                          - generic: "#0F172A"
+                        - 'button "Copy color #3B82F6" [ref=f9e205] [cursor=pointer]':
+                          - generic: "#3B82F6"
+                        - 'button "Copy color #93C5FD" [ref=f9e206] [cursor=pointer]':
+                          - generic: "#93C5FD"
+                        - 'button "Copy color #E2E8F0" [ref=f9e207] [cursor=pointer]':
+                          - generic: "#E2E8F0"
+                    - 'group "Typography: Typography Showcase" [ref=f9e208]':
+                      - generic [ref=f9e209]:
+                        - paragraph [ref=f9e210]: Typography
+                        - generic [ref=f9e211]:
+                          - generic [ref=f9e212]:
+                            - heading "Typography Showcase" [level=3] [ref=f9e213]
+                            - paragraph [ref=f9e214]: SF Pro
+                          - generic [ref=f9e215]: AaBb
+                      - generic [ref=f9e217]:
+                        - 'button "Copy color #1C1917" [ref=f9e218] [cursor=pointer]':
+                          - generic: "#1C1917"
+                        - 'button "Copy color #57534E" [ref=f9e219] [cursor=pointer]':
+                          - generic: "#57534E"
+                        - 'button "Copy color #A8A29E" [ref=f9e220] [cursor=pointer]':
+                          - generic: "#A8A29E"
+                        - 'button "Copy color #F5F5F4" [ref=f9e221] [cursor=pointer]':
+                          - generic: "#F5F5F4"
+                - complementary "Export project" [ref=f9e222]:
+                  - generic [ref=f9e223]:
+                    - heading "Export" [level=3] [ref=f9e224]
+                    - paragraph [ref=f9e225]: Pick a format for your cloned site, then download the ZIP.
+                  - generic [ref=f9e226]:
+                    - tablist "Export format" [ref=f9e227]:
+                      - tab "Static" [selected] [ref=f9e228] [cursor=pointer]
+                      - tab "Vite" [ref=f9e231] [cursor=pointer]
+                      - tab "Next.js" [ref=f9e233] [cursor=pointer]
+                    - list [ref=f9e235]:
+                      - listitem [ref=f9e236]:
+                        - link "Preparing files" [ref=f9e237] [cursor=pointer]:
+                          - /url: "#prepare"
+                      - listitem [ref=f9e239]:
+                        - link "Compressing ZIP" [ref=f9e240] [cursor=pointer]:
+                          - /url: "#compress"
+                      - listitem [ref=f9e242]:
+                        - link "Saving download" [ref=f9e243] [cursor=pointer]:
+                          - /url: "#save"
+                      - listitem [ref=f9e245]:
+                        - link "Done" [ref=f9e246] [cursor=pointer]:
+                          - /url: "#done"
+                  - generic [ref=f9e248]:
+                    - button "Download ZIP Static Download ZIP Static" [ref=f9e249] [cursor=pointer]
+                    - button "Open full editor Open full editor" [ref=f9e250] [cursor=pointer]
+  - status

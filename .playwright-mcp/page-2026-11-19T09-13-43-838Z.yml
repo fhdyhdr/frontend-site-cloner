@@ -1,0 +1,47 @@
+- generic [ref=f10e2]:
+  - generic [ref=f10e3]:
+    - generic [ref=f10e4]:
+      - generic [ref=f10e5]:
+        - generic [ref=f10e6]: Flowdeck
+        - button "Switch to dark theme" [ref=f10e8] [cursor=pointer]
+      - main [ref=f10e11]:
+        - region "Workflow canvas" [ref=f10e15]:
+          - region "Chat with your spreadsheets" [ref=f10e17]:
+            - generic [ref=f10e19]:
+              - textbox "Site URL to clone" [ref=f10e20]:
+                - /placeholder: https://example.com
+              - button "Refresh preview" [ref=f10e21] [cursor=pointer]
+              - button "Clone Site" [ref=f10e25] [cursor=pointer]
+            - generic [ref=f10e26]:
+              - application "Chat with your spreadsheets diagram" [ref=f10e32]
+              - complementary "Export project" [ref=f10e36]:
+                - generic [ref=f10e37]:
+                  - heading "Export" [level=3] [ref=f10e38]
+                  - paragraph [ref=f10e39]: Pick a format for your cloned site, then download the ZIP.
+                - generic [ref=f10e40]:
+                  - tablist "Export format" [ref=f10e41]:
+                    - tab "Static" [selected] [ref=f10e42] [cursor=pointer]
+                    - tab "Vite" [ref=f10e45] [cursor=pointer]
+                    - tab "Next.js" [ref=f10e47] [cursor=pointer]
+                  - list [ref=f10e49]:
+                    - listitem [ref=f10e50]:
+                      - link "Preparing files" [ref=f10e51] [cursor=pointer]:
+                        - /url: "#prepare"
+                    - listitem [ref=f10e53]:
+                      - link "Compressing ZIP" [ref=f10e54] [cursor=pointer]:
+                        - /url: "#compress"
+                    - listitem [ref=f10e56]:
+                      - link "Saving download" [ref=f10e57] [cursor=pointer]:
+                        - /url: "#save"
+                    - listitem [ref=f10e59]:
+                      - link "Done" [ref=f10e60] [cursor=pointer]:
+                        - /url: "#done"
+                - generic [ref=f10e62]:
+                  - button "Download ZIP Static Download ZIP Static" [ref=f10e63] [cursor=pointer]
+                  - button "Open full editor Open full editor" [ref=f10e64] [cursor=pointer]
+    - navigation "Primary navigation" [ref=f10e65]:
+      - generic [ref=f10e66]:
+        - button "Dashboard" [ref=f10e67] [cursor=pointer]
+        - button "Project" [ref=f10e73] [cursor=pointer]
+        - button "Setting" [ref=f10e81] [cursor=pointer]
+  - status

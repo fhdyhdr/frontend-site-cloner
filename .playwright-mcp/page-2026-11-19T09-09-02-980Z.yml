@@ -1,0 +1,100 @@
+- generic [ref=f7e2]:
+  - generic [ref=f7e3]:
+    - generic [ref=f7e4]:
+      - generic [ref=f7e5]:
+        - generic [ref=f7e6]: Flowdeck
+        - button "Switch to dark theme" [ref=f7e8] [cursor=pointer]
+      - main [ref=f7e11]:
+        - region "Workflow canvas" [ref=f7e15]:
+          - region "Chat with your spreadsheets" [ref=f7e17]:
+            - generic [ref=f7e19]:
+              - textbox "Site URL to clone" [ref=f7e20]:
+                - /placeholder: https://example.com
+              - button "Refresh preview" [ref=f7e21] [cursor=pointer]
+              - button "Clone Site" [ref=f7e25] [cursor=pointer]
+            - generic [ref=f7e26]:
+              - generic [ref=f7e27]:
+                - application "Chat with your spreadsheets diagram" [ref=f7e32]
+                - generic [ref=f7e36]:
+                  - 'group "Branding: Brand Style Guide" [ref=f7e37]':
+                    - generic [ref=f7e38]:
+                      - paragraph [ref=f7e39]: Branding
+                      - generic [ref=f7e40]:
+                        - generic [ref=f7e41]:
+                          - heading "Brand Style Guide" [level=3] [ref=f7e42]
+                          - paragraph [ref=f7e43]: Core identity
+                        - generic [ref=f7e44]: AaBb
+                    - generic [ref=f7e46]:
+                      - 'button "Copy color #2A2A2A" [ref=f7e47] [cursor=pointer]':
+                        - generic: "#2A2A2A"
+                      - 'button "Copy color #5D4435" [ref=f7e48] [cursor=pointer]':
+                        - generic: "#5D4435"
+                      - 'button "Copy color #A5B592" [ref=f7e49] [cursor=pointer]':
+                        - generic: "#A5B592"
+                      - 'button "Copy color #F0F0E6" [ref=f7e50] [cursor=pointer]':
+                        - generic: "#F0F0E6"
+                  - 'group "Design System: Design System Showcase" [ref=f7e51]':
+                    - generic [ref=f7e52]:
+                      - paragraph [ref=f7e53]: Design System
+                      - generic [ref=f7e54]:
+                        - generic [ref=f7e55]:
+                          - heading "Design System Showcase" [level=3] [ref=f7e56]
+                          - paragraph [ref=f7e57]: Components & tokens
+                        - generic [ref=f7e58]: UI/
+                    - generic [ref=f7e60]:
+                      - 'button "Copy color #0F172A" [ref=f7e61] [cursor=pointer]':
+                        - generic: "#0F172A"
+                      - 'button "Copy color #3B82F6" [ref=f7e62] [cursor=pointer]':
+                        - generic: "#3B82F6"
+                      - 'button "Copy color #93C5FD" [ref=f7e63] [cursor=pointer]':
+                        - generic: "#93C5FD"
+                      - 'button "Copy color #E2E8F0" [ref=f7e64] [cursor=pointer]':
+                        - generic: "#E2E8F0"
+                  - 'group "Typography: Typography Showcase" [ref=f7e65]':
+                    - generic [ref=f7e66]:
+                      - paragraph [ref=f7e67]: Typography
+                      - generic [ref=f7e68]:
+                        - generic [ref=f7e69]:
+                          - heading "Typography Showcase" [level=3] [ref=f7e70]
+                          - paragraph [ref=f7e71]: SF Pro
+                        - generic [ref=f7e72]: AaBb
+                    - generic [ref=f7e74]:
+                      - 'button "Copy color #1C1917" [ref=f7e75] [cursor=pointer]':
+                        - generic: "#1C1917"
+                      - 'button "Copy color #57534E" [ref=f7e76] [cursor=pointer]':
+                        - generic: "#57534E"
+                      - 'button "Copy color #A8A29E" [ref=f7e77] [cursor=pointer]':
+                        - generic: "#A8A29E"
+                      - 'button "Copy color #F5F5F4" [ref=f7e78] [cursor=pointer]':
+                        - generic: "#F5F5F4"
+              - complementary "Export project" [ref=f7e79]:
+                - generic [ref=f7e80]:
+                  - heading "Export" [level=3] [ref=f7e81]
+                  - paragraph [ref=f7e82]: Pick a format for your cloned site, then download the ZIP.
+                - generic [ref=f7e83]:
+                  - tablist "Export format" [ref=f7e84]:
+                    - tab "Static" [selected] [ref=f7e85] [cursor=pointer]
+                    - tab "Vite" [ref=f7e88] [cursor=pointer]
+                    - tab "Next.js" [ref=f7e90] [cursor=pointer]
+                  - list [ref=f7e92]:
+                    - listitem [ref=f7e93]:
+                      - link "Preparing files" [ref=f7e94] [cursor=pointer]:
+                        - /url: "#prepare"
+                    - listitem [ref=f7e96]:
+                      - link "Compressing ZIP" [ref=f7e97] [cursor=pointer]:
+                        - /url: "#compress"
+                    - listitem [ref=f7e99]:
+                      - link "Saving download" [ref=f7e100] [cursor=pointer]:
+                        - /url: "#save"
+                    - listitem [ref=f7e102]:
+                      - link "Done" [ref=f7e103] [cursor=pointer]:
+                        - /url: "#done"
+                - generic [ref=f7e105]:
+                  - button "Download ZIP Static Download ZIP Static" [ref=f7e106] [cursor=pointer]
+                  - button "Open full editor Open full editor" [ref=f7e107] [cursor=pointer]
+    - navigation "Primary navigation" [ref=f7e108]:
+      - generic [ref=f7e109]:
+        - button "Dashboard" [ref=f7e110] [cursor=pointer]
+        - button "Project" [ref=f7e116] [cursor=pointer]
+        - button "Setting" [ref=f7e124] [cursor=pointer]
+  - status

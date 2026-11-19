@@ -1,0 +1,605 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  /* Light palette. Layers are deliberately kept apart so the shell reads as
+     stacked surfaces instead of one flat sheet:
+       #F4F4F1 -> sidebar (the frame; a near-white that still reads as white)
+       #F7F7F5 -> Dashboard workspace surface (the panel behind the cell grid)
+       #FFFFFF -> cards sitting on that surface
+       #EAEAE7 -> page background for the non-Dashboard routes
+       #DCDCDC -> borders, inputs and muted fills (the anchors between them)
+     Getting the sidebar right took several attempts. #FAFAF8 was identical to
+     the card colour, and #E8E8E5 read as grey. Lifting it above the grid
+     (#FBFBFA) looked white but collided with the workspace surface - only
+     1.036:1 apart - so the boundary vanished. #F4F4F1 is the compromise: still
+     unmistakably white, but far enough below the grid to give the edge definition
+     without a shadow. */
+  --color-background: #eaeae7;
+  --color-foreground: #1c1b1a;
+  --color-card: #ffffff;
+  --color-muted: #dcdcdc;
+  --color-muted-foreground: #5c5b58;
+  --color-border: #dcdcdc;
+  --color-input: #dcdcdc;
+  --color-ring: #d6ff59;
+  --color-primary: #d6ff59;
+  /* #D6FF59 is a very light lime, so on-colour text must be the near-black
+     foreground. White would land at ~1.3:1 and be unreadable. */
+  --color-primary-foreground: #1c1b1a;
+  --color-accent: #dcdcdc;
+  --color-accent-foreground: #1c1b1a;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1c1b1a;
+  --color-chart-2: #d6ff59;
+  --color-chart-3: #7c5cff;
+  /* `--color-primary` (#D6FF59) only works as a *fill*: as text on a light
+     surface it drops to ~1.05:1. This darker olive sibling carries the same
+     hue for the handful of places that need accent-coloured text or icons. */
+  --color-primary-ink: #5c6b00;
+  /* A visible rim for lime-filled buttons. Lime on a light surface has almost
+     no edge of its own, so the button silhouette is drawn with this instead. */
+  --color-primary-border: #4a5300;
+  /* Button fill. Primary CTAs used to be lime, but lime is reserved for accent
+     marks (focus rings, diagram nodes, dots, badges) and read as decoration on
+     a button. Buttons are now plain ink: near-black in light, near-white in dark.
+     These are separate tokens on purpose - repointing --color-primary would have
+     turned every accent mark black too. */
+  --color-action: #1c1b1a;
+  --color-action-foreground: #ffffff;
+  --color-action-border: #1c1b1a;
+
+  --color-sidebar: #ffffff;
+  --color-sidebar-foreground: #1c1b1a;
+  /* Slightly darker than the #F4F4F1 sidebar so an active/hovered row reads as
+     pressed into the frame rather than glowing above it. */
+  --color-sidebar-accent: #e4e4e0;
+  --color-sidebar-accent-foreground: #1c1b1a;
+  --color-sidebar-border: #dcdcdc;
+  --color-sidebar-primary: #d6ff59;
+  --color-sidebar-primary-foreground: #1c1b1a;
+  --color-sidebar-ring: #d6ff59;
+}
+
+:root {
+  color-scheme: light;
+
+  --color-subtle: #eaeae7;
+  --color-subtle-2: #dcdcdc;
+  --color-hover: #eaeae7;
+  --color-success: #d6ff59;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --color-info: #2563eb;
+
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 18px 40px -30px rgba(15, 23, 42, 0.35);
+  --shadow-pop: 0 30px 60px -30px rgba(2, 8, 20, 0.35);
+
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-foreground);
+  background: var(--color-background);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Dark layering, darkest -> lightest:
+     #1E1E1E -> workspace / page background (recessed)
+     #242424 -> sidebar (the frame) and cards sitting on the workspace
+     #1C1B1A -> the warm mid-tone used for borders and muted fills
+     The workspace used to be #171717, which read as a dense, flat black. It is
+     lifted to #1E1E1E so the grid surface feels like a dark grey rather than a
+     hole, while staying clearly below the #242424 frame. That gap is what keeps
+     the seam between the workspace and the outer strip visible: at 1.074:1 it is
+     subtle but intact. Raising the background further, or lightening the frame
+     to match, would dissolve that seam. */
+  --color-background: #1e1e1e;
+  --color-foreground: #eaeae7;
+  --color-card: #242424;
+  --color-muted: #1c1b1a;
+  --color-muted-foreground: #9a9a97;
+  --color-border: #2e2e2e;
+  --color-input: #2e2e2e;
+  --color-ring: #d6ff59;
+  --color-primary: #d6ff59;
+  --color-primary-foreground: #1c1b1a;
+  --color-accent: #1c1b1a;
+  --color-accent-foreground: #eaeae7;
+  --color-popover: #242424;
+  --color-popover-foreground: #eaeae7;
+  --color-chart-2: #d6ff59;
+  --color-chart-3: #b7a4ff;
+  /* On dark surfaces the lime itself is readable as text, so the ink token
+     simply points back at it. */
+  --color-primary-ink: #d6ff59;
+  /* In dark mode lime already separates from the surface, so the rim stays a
+     muted version of the fill rather than a hard black line. */
+  --color-primary-border: #8fa63a;
+  /* Buttons invert with the theme: near-white fill with dark ink, so the CTA is
+     the brightest thing on screen instead of a lime accent mark. */
+  --color-action: #f2f4f5;
+  --color-action-foreground: #1c1b1a;
+  --color-action-border: #f2f4f5;
+
+  --color-sidebar: #242424;
+  --color-sidebar-foreground: #eaeae7;
+  --color-sidebar-accent: #1c1b1a;
+  --color-sidebar-accent-foreground: #eaeae7;
+  --color-sidebar-border: #2e2e2e;
+  --color-sidebar-primary: #d6ff59;
+  --color-sidebar-primary-foreground: #1c1b1a;
+  --color-sidebar-ring: #d6ff59;
+
+  --color-subtle: #1c1b1a;
+  --color-subtle-2: #242424;
+  --color-hover: #1c1b1a;
+  --color-success: #d6ff59;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-info: #60a5fa;
+
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.02), 0 24px 48px -32px #000;
+  --shadow-pop: 0 30px 60px -30px #000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+/*
+ * Theme cross-fade. Switching `data-theme` swaps the whole palette in one
+ * frame, so every element gets the same colour transition for the same
+ * duration; a shared duration is what stops the area around the canvas from
+ * landing late. The property list stays short on purpose -- `fill`/`stroke`
+ * would repaint every SVG path (icons, canvas edges) and `box-shadow` every
+ * card, which is what made the old 420ms version feel heavy. The `transition`
+ * shorthand (not longhands) is required so `*` overrides `transition-colors`
+ * utility classes.
+ */
+html[data-theme-switching],
+html[data-theme-switching] *,
+html[data-theme-switching] *::before,
+html[data-theme-switching] *::after {
+  transition:
+    color 170ms ease-in-out,
+    background-color 170ms ease-in-out,
+    border-color 170ms ease-in-out,
+    outline-color 170ms ease-in-out !important;
+}
+
+/*
+ * Gradient and stack backgrounds (page radial gradients, canvas dot grid, node
+ * fill) cannot be interpolated, so they would snap to the new palette while
+ * everything else fades. A single veil in the *incoming* background colour,
+ * fading out, keeps the whole page in step without a second full-screen layer.
+ */
+html[data-theme-switching]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: var(--color-background);
+  animation: theme-veil 170ms ease-in-out forwards;
+}
+
+@keyframes theme-veil {
+  from {
+    opacity: 0.34;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Sidebar labels and the footer card.
+
+   They used to be wrapped in AnimatePresence, which animated their width from
+   0 to auto - a layout animation per item, on the same frames as the sidebar's
+   own width tween. This is a pure opacity reveal with a short slide, delayed so
+   the text arrives once the panel has already started opening instead of
+   squeezing in. It runs on its own, so the sidebar can keep animating width
+   without the two fighting. */
+@keyframes sidebar-reveal {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.sidebar-reveal {
+  animation: sidebar-reveal 220ms cubic-bezier(0.22, 1, 0.36, 1) 70ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-reveal {
+    animation: none;
+  }
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(900px 520px at 88% -12%, color-mix(in srgb, var(--color-chart-3) 9%, transparent), transparent 62%),
+    radial-gradient(760px 460px at -6% 0%, color-mix(in srgb, var(--color-primary) 7%, transparent), transparent 60%),
+    var(--color-background);
+  background-attachment: fixed;
+  color: var(--color-foreground);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+svg {
+  display: block;
+}
+
+/* ---------- Star on GitHub ------------------------------------------------
+ * The rainbow ring. Ported from a shadcn-style snippet, rewritten as CSS so it
+ * lives with the rest of the theme instead of in a wall of arbitrary values.
+ *
+ * How the ring works: three background layers, clipped differently.
+ *   1. plate        -> padding-box  (paints the button body)
+ *   2. plate fade   -> border-box   (the body again, with a soft lower edge)
+ *   3. hue sweep    -> border-box   (only visible through the transparent border)
+ * `background-clip: padding-box, border-box, border-box` is what separates the
+ * body from the ring; `border: transparent` is what lets the sweep show through.
+ *
+ * The plates are a variable so the dark theme swaps the ink WITHOUT touching the
+ * layer order. Patching only the first two layers from a utility class instead
+ * left the light plates showing in dark mode.
+ */
+.sogh {
+  --sogh-plate: #ffffff;
+  --sogh-ink: var(--color-foreground);
+  /* Sized to fit INSIDE the 47px tab strip (which has 8px of top padding), so the
+     button and its glow stay clear of the workspace below. At 40px it was 48px
+     tall once the strip's padding was counted, and the halo spilled onto the
+     panel underneath. 32px leaves 3px of slack at each end.
+
+     The header row aligns its children to the BOTTOM (items-end), so a short
+     button sinks and reads as low next to the taller tab and theme toggle. The
+     translate lifts it to roughly the row's optical centre without changing the
+     row's own layout. */
+  height: 2rem;
+  translate: 0 -3px;
+  padding: 0 0.7rem;
+  gap: 0.4rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-image:
+    linear-gradient(var(--sogh-plate), var(--sogh-plate)),
+    linear-gradient(
+      var(--sogh-plate) 50%,
+      color-mix(in srgb, var(--sogh-plate) 60%, transparent) 80%,
+      transparent
+    ),
+    linear-gradient(
+      90deg,
+      hsl(0 100% 63%),
+      hsl(90 100% 63%),
+      hsl(210 100% 63%),
+      hsl(195 100% 63%),
+      hsl(270 100% 63%)
+    );
+  background-size: 200% 100%, 100% 100%, 100% 100%;
+  background-clip: padding-box, border-box, border-box;
+  background-origin: border-box;
+  color: var(--sogh-ink);
+  /* The header strip is a dense toolbar, not a page CTA: 13px/500 keeps the label
+     readable while letting the button shrink without the text looking oversized
+     inside it. */
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1;
+  /* No transform transition: the button never scales. Only the label ink and the
+     star animate, so nothing in the header shifts on hover. */
+  transition: color 170ms ease;
+  /* The sweep has to run behind the label without leaking past the rounded
+     corners, hence isolation + overflow on the button itself. */
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+/* The shared Button base forces [&_svg]:size-4 (16px). At the new 32px height
+   that icon looked oversized against the smaller label, so it is scaled back to
+   match. */
+.sogh > svg {
+  width: 14px;
+  height: 14px;
+}
+
+[data-theme="dark"] .sogh {
+  --sogh-plate: #121213;
+  --sogh-ink: #f2f4f5;
+}
+
+/* Coloured halo under the button. It is a pseudo-element rather than a
+   box-shadow because a shadow cannot hold a hue sweep either. Sits behind the
+   button (z-index -1) so it only ever reads as glow.
+
+   The glow spans the button's full width. The first pass used width:52% (an
+   echo of the original snippet, where the button was wide enough that a centred
+   half-width blob still read as a halo). Once the button shrank to 164px that
+   percentage became 84px - a short bar floating under the middle of the label -
+   so it is pinned to the edges here instead of to a fraction.
+
+   The inset keeps the blur from bleeding past the rounded corners, and the
+   small blur radius keeps the whole halo inside the 47px header strip: a
+   taller, softer glow painted a coloured smudge on the workspace below.
+
+   Intensity is per theme, not shared. The same saturated hue sweep that reads as
+   a faint rim on a near-black header reads as a pastel smear on a white one:
+   against #FFFFFF the glow is the only saturated thing in the strip, so it
+   dominates. Light mode therefore gets a lower opacity and a tighter blur, and
+   dark mode keeps the full strength. */
+.sogh::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  /* Anchored edge-to-edge, then pulled in by the blur radius so the halo does
+     not sit proud of the ring's corners. */
+  left: 6px;
+  right: 6px;
+  bottom: -1px;
+  /* 3px rather than 6px: the halo was reading as a coloured bar welded under
+     the pill instead of light spilling out of it. Half the height plus the
+     same blur keeps it as a thin rim. */
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    hsl(0 100% 63%),
+    hsl(90 100% 63%),
+    hsl(210 100% 63%),
+    hsl(195 100% 63%),
+    hsl(270 100% 63%)
+  );
+  filter: blur(5px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* Light mode: half the intensity again, and a tighter blur so the colour stays
+   hugging the pill instead of blooming into the white header. */
+[data-theme="light"] .sogh::before {
+  opacity: 0.28;
+  filter: blur(3px);
+  bottom: -2px;
+  height: 2px;
+}
+
+/* No :hover / :active transform. The size is fixed; the ring is already the
+   affordance, and a scaling header control nudges the neighbouring theme icon. */
+
+@media (prefers-reduced-motion: reduce) {
+  .sogh,
+  .sogh::before {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* Below this width the tab strip needs the room, so the label drops out and the
+   control survives as the Google mark alone. It is not hidden outright: the
+   sign-in slot is too important to discard, and the coloured G still reads as
+   Google without words. */
+@media (max-width: 1180px) {
+  .sogh > span:not(.sr-only) {
+    display: none;
+  }
+  .sogh {
+    padding: 0 0.7rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .sogh {
+    display: none;
+  }
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-primary) 26%, transparent);
+}
+
+/* ---------- Minimal scrollbars ---------- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-muted-foreground) 22%, transparent)
+    transparent;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-muted-foreground) 18%, transparent);
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-muted-foreground) 45%, transparent);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-muted-foreground) 65%, transparent);
+}
+
+:where(button, a, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /*
+   * Override the theme cross-fade: the blanket `transition-duration` above is
+   * longhand and loses to the `transition` shorthand in the switching rule, so
+   * reduced-motion users would still get the 420ms fade.
+   */
+  html[data-theme-switching],
+  html[data-theme-switching] *,
+  html[data-theme-switching] *::before,
+  html[data-theme-switching] *::after {
+    transition: none !important;
+  }
+
+  html[data-theme-switching]::before {
+    display: none !important;
+  }
+}
+
+/* ---------- Mobile shell --------------------------------------------------
+   Under md the sidebar and the browser-like tab strip are both gone. What is
+   left is one quiet brand line, the page, and a single fixed navigation bar.
+   Keeping the bar in one place (instead of a hamburger + sheet layered on top
+   of the tabs) is what removes the stacked, cramped feeling on small screens. */
+.mobile-top-brand {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  padding: 0 16px 2px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-sidebar-foreground);
+}
+
+.mobile-top-actions {
+  margin-left: auto;
+  padding-right: 8px;
+}
+
+@media (min-width: 768px) {
+  .mobile-top-actions {
+    padding-right: 0;
+  }
+}
+
+.mobile-bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 70;
+  padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+  background: color-mix(in srgb, var(--color-card) 94%, transparent);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -10px 30px -22px
+    color-mix(in srgb, var(--color-foreground) 55%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  backdrop-filter: blur(14px) saturate(130%);
+}
+
+.mobile-bottom-nav__inner {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.mobile-bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 54px;
+  padding: 6px 2px 4px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--color-muted-foreground);
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1;
+  transition: color 0.16s ease, background 0.16s ease;
+}
+
+.mobile-bottom-nav__item:active {
+  background: color-mix(in srgb, var(--color-foreground) 6%, transparent);
+}
+
+.mobile-bottom-nav__icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 27px;
+  border-radius: 9px;
+  transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.mobile-bottom-nav__item.is-active {
+  color: var(--color-foreground);
+}
+
+/* Lime stays an accent: only the active icon gets the fill. */
+.mobile-bottom-nav__item.is-active .mobile-bottom-nav__icon {
+  background: var(--color-sidebar-primary);
+  color: var(--color-sidebar-primary-foreground);
+  box-shadow: 0 4px 12px -5px
+    color-mix(in srgb, var(--color-sidebar-primary) 80%, transparent);
+}
+
+.mobile-bottom-nav__label {
+  white-space: nowrap;
+}
+
+@media (max-width: 360px) {
+  .mobile-bottom-nav__label {
+    font-size: 10px;
+  }
+  .mobile-bottom-nav__item {
+    gap: 3px;
+  }
+}
